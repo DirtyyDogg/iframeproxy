@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+      function sendToHost(obj){
+        if(typeof(window.parent.parent.getIframeData)=="function"){
+          window.parent.parent.getIframeData(obj);
+        }
+      }
+      window.onload=function(){
+        sendToHost(getUrlVars());
+      };
+		</script>
+	</head>
+</html>

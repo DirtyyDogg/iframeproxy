@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Guest Content</title>
+    <style>
+      body{
+        padding:0;
+        margin:0;
+      }
+      .content_block{
+        width:500px;
+        height:150px;
+        background:#FF0000;
+        margin-bottom:5px;
+        cursor:pointer;
+      }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="iframeproxy.js"></script>
+		<script type="text/javascript">
+      window.onload=function(){
+        iframeproxy.makeHostProxy("http://hostdomain.com/HostCrossDomainIframe/iframeproxy.html");
+        //
+        function sendBodyHeightToHost(){
+          h = document.body.clientHeight;
+          iframeproxy.sendToHost({height:h});
+        }
+        //
+        sendBodyHeightToHost();
+        //
+        $(".content_block").live("click", function(){
+          $("body").append($(this).clone());
+          sendBodyHeightToHost();
+        });
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content_block"></div>
+	</body>
+</html>
