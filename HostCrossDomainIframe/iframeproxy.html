@@ -10,8 +10,12 @@
         return vars;
       }
       function sendToHost(obj){
-        if(typeof(window.parent.parent.getIframeData)=="function"){
-          window.parent.parent.getIframeData(obj);
+        try {
+          if(typeof(window.parent.parent.getIframeData)=="function"){
+            window.parent.parent.getIframeData(obj);
+          }
+        } catch (e) {
+          return false;
         }
       }
       window.onload=function(){
