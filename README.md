@@ -16,7 +16,7 @@ src="http://gestdomain.com/GuestIframe/index.html" scrolling="no"></iframe>
 
 3. and add the "getIframeData" function that will receive "data" from the gest iframe 
    than use the received data as you want (ex: control the height of the iframe)
-```
+```javascript
 function getIframeData(data){
   if(data.height){
     $("#guestFrame").height(data.height);
